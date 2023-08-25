@@ -1,0 +1,32 @@
+Phân chia công việc làm bt nhóm UD & PM
+
+
+
+Các chức năng bắt buộc:
+	1. Đăng ký đăng nhập
+	2. Tải hình ảnh của người dùng web
+	3. Quản lý album
+	4. Chia sẻ & nhúng
+	5. Tương tác (theo dõi, comment..)
+	6. Tìm kiếm 
+	7. Bảo mật quyền riêng tư
+	8. Tương thích với thiết bị di động 
+Các chức năng bổ sung:
+
+
+cụm 1: 1-3-5-7
+cụm 2: 2-4-6-8
+
+đk đn -> trang chủ(cần hiển thị ảnh)
+
+Thể loại hình ảnh của web
+
+Phong cảnh
+Chân dung
+Thể thao
+Sự kiện
+Thiên nhiên
+Đường phố
+Trừu tượng
+Sáng tạo 
+Hoạt hình
