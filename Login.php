@@ -16,8 +16,8 @@ if (isset($_SESSION['username'])){
     if (isset($_POST['dangnhap'])) {
         include('connect.php');
 
-        $username = mysqli_real_escape_string($connect, $_POST['username']);
-        $password = mysqli_real_escape_string($connect, $_POST['password']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     if (empty($username) || empty($password)) {
         echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
@@ -26,8 +26,8 @@ if (isset($_SESSION['username'])){
 
     $password = md5($password);
 
-    $query = "SELECT username, password FROM member WHERE username='$username'";
-    $result = mysqli_query($connect, $query);
+    $query = "SELECT username, password FROM user WHERE username='$username'";
+    $result = mysqli_query($conn, $query);
 
     if (!$result || mysqli_num_rows($result) == 0) {
         echo "Tên đăng nhập hoặc mật khẩu không đúng!";
@@ -44,15 +44,15 @@ if (isset($_SESSION['username'])){
     exit;
     }
 
-    $connect->close();
+    $conn->close();
   }
   ?>
   
-    <form action="login.php" class="dangnhap" method="POST">
+    <form action="Trangchu.php" class="dangnhap" method="POST">
         Tên đăng nhập: <input type="text" name="username" />
         Mật khẩu: <input type="password" name="password" />
         <input type="submit" class="button" name="dangnhap" value="Đăng nhập" />
-        <a href="dangky.php" title="Đăng ký">Đăng ký</a>
+        <a href="Signup.php" title="Đăng ký">Đăng ký</a>
     </form>
 </body>
 </html>

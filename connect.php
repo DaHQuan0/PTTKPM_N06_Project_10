@@ -1,14 +1,14 @@
 <?php 
     // Kết nối đến cơ sở dữ liệu
-    $servername = "localhost:3306";
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "shareimage";
 
-    $connection = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Kiểm tra kết nối
-    if ($connection->connect_error) {
+    if ($conn->connect_error) {
         die("Không thể kết nối đến cơ sở dữ liệu: " . $conn->connect_error);
     }
 ?>
