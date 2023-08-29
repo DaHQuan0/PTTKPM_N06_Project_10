@@ -5,14 +5,16 @@
     'GRAD' 0,
     'opsz' 24
 }
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     display: flex;
 }
 
-.start {
-    display: flex;
-}
-
 .toolbar {
-    margin-right: 35px;
+    margin-right: 10%;
 }

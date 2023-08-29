@@ -17,25 +17,25 @@
     
     <header>
         <div class="container">
-            <div class="start">
-                    <button class="toolbar">
-                        <span class="material-symbols-outlined">menu</span>
-                    </button>
+            <div class="start" style="padding-left: 15px;">
+                <button class="toolbar" style="border: none; background-color: white;">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
                 <a href="Trangchu.php" class="logo">
                     <img src="images/logo.png" alt="" width="25%">
                 </a>
             </div>
-            <div class="center">
+            <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 25px; border-radius: 15px;">
                 <form action="Search.php" method="post" style="display: flex;">
-                    <input type="text" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm">
-                    <button class="search-button" type="submit" name="btn">
+                    <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;">
+                    <button class="search-button" type="submit" name="btn" style="border-radius: 15px;background-color: white;">
                         <span class="material-symbols-outlined">search</span>
                     </button>
                 </form>
             </div>
             <div class="end">
-                <button class="avatar">
-                    <img src="" alt="Hình ảnh đại diện" height="32" width="32">
+                <button class="avatar" style="height: 40px; width: 40px; border: none; background-color: white; padding-left: 25px;">
+                    <img src="" alt="Hình ảnh đại diện" style="border-radius: 25px;">
                 </button>
             </div>
         </div>

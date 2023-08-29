@@ -11,5 +11,4 @@
     if ($connection->connect_error) {
         die("Không thể kết nối đến cơ sở dữ liệu: " . $conn->connect_error);
     }
-    echo "Kết nối thành công!";
 ?>
