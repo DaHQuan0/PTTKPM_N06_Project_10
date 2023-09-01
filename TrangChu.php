@@ -41,5 +41,15 @@
         </div>
         
     </header>
+    <div class="webContent">
+        <div class="leftMenu">
+            <a href=""><p>Trang chủ</p></a>
+            <a href=""><p>Album</p></a>
+            <a href=""><p>Ảnh yêu thích</p></a>
+        </div>
+        <div class="mainContainer">
+            <a href=""><img src="" alt="Ảnh"></a>
+        </div>
+    </div>
 </body>
 </html>

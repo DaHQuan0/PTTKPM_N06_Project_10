@@ -18,3 +18,6 @@ header {
 .toolbar {
     margin-right: 10%;
 }
+.webContent{
+    display: flex;
+}
