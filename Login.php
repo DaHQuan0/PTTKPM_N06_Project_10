@@ -1,58 +1,61 @@
-<?php
-session_start();
-if (isset($_SESSION['username'])){
-    unset($_SESSION['username']);
-}
+<?php 
+    include "connect.php";
+    if(isset($_POST['username']) && isset($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $dbnamelogin = "SELECT id FROM user WHERE username = '$username'";
+        $result = $conn->query($dbnamelogin);
+
+        if($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $id = $row['id'];
+
+            $dbnamepass = "SELECT id FROM user WHERE username = '$username' AND password = '$password'";
+            $passresult = $conn->query($dbnamepass);
+
+            if($passresult && $passresult->num_rows > 0) {
+                header("Location:Trangchu.php?id=$id");
+                exit();
+            } else {
+                $errorMessage = "Mật khẩu không chính xác.";
+            }
+        } else {
+            $errorMessage = "Chưa có tài khoản.";
+        }
+    }
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style.css"/>
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="css/Login.css">
 </head>
 <body>
-    <?php
-    if (isset($_POST['dangnhap'])) {
-        include('connect.php');
+    <div class="container">
 
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        <div class = "container-h2">
+             <h2>Đăng nhập</h2>
+        </div>
 
-    if (empty($username) || empty($password)) {
-        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
+        <form method="post" action="Login.php">
+            <label for="username">Tên người dùng:</label>
+            <input type="text" id="username" name="username" required><br>
 
-    $password = md5($password);
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br>
 
-    $query = "SELECT username, password FROM user WHERE username='$username'";
-    $result = mysqli_query($conn, $query);
-
-    if (!$result || mysqli_num_rows($result) == 0) {
-        echo "Tên đăng nhập hoặc mật khẩu không đúng!";
-    } else {
-        $row = mysqli_fetch_assoc($result);
-
-    if ($password != $row['password']) {
-        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
-
-    $_SESSION['username'] = $username;
-    echo "Xin chào <b>".$username."</b>. Bạn đã đăng nhập thành công. <a href=''>Thoát</a>";
-    exit;
-    }
-
-    $conn->close();
-  }
-  ?>
-  
-    <form action="Trangchu.php" class="dangnhap" method="POST">
-        Tên đăng nhập: <input type="text" name="username" />
-        Mật khẩu: <input type="password" name="password" />
-        <input type="submit" class="button" name="dangnhap" value="Đăng nhập" />
-        <a href="Signup.php" title="Đăng ký">Đăng ký</a>
-    </form>
+            <button type="submit">Đăng nhập</button>
+        </form>
+        <?php
+        if (isset($errorMessage)) {
+            echo "<p class='error-message'>$errorMessage</p>";
+        }
+        ?>
+        <div class="register-link">
+            Chưa có tài khoản? <a href="Signup.php">Đăng ký</a>
+        </div>
+    </div>
 </body>
 </html>
