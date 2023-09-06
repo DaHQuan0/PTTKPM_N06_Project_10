@@ -50,7 +50,7 @@ input[type="email"] {
     font-size: 14px;
 }
 
-button[type="submit"] {
+input[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@ button[type="submit"] {
     margin-top: 15px;
 }
 
-button[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: var(--hover-color);
 }
 
@@ -73,22 +73,6 @@ p.error-message {
     color: red;
     font-size: 14px;
     margin-top: 10px;
-}
-
-.register-link {
-    margin-top: 15px;
-    font-size: 16px;
-    color: var(--text-color);
-    text-align: center;
-}
-
-.register-link a {
-    color: var(--main-color);
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    color: var(--hover-color);
 }
 
 .container container-h2{
