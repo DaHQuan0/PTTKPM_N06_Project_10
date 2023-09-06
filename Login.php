@@ -27,7 +27,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="css/Login.css">

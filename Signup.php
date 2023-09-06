@@ -1,24 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+<html lang="en">
+<head>
+    <title>Đăng ký</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/Signup.css"/>
+</head>
 <body>
 
-<form method="post" action="Login.php" class="form">
+    <div class="container">
+        <h2>Đăng ký</h2>
+        <?php
+        if (!empty($errorMessage)) {
+            echo "<p class='error-message'>$errorMessage</p>";
+        }
+        if (!empty($successMessage)) {
+            echo "<p class='success-message'>$successMessage</p>";
+        }
+        ?>
+        <form method="post" action="Signup.php">
+            <label for="username">Tên người dùng:</label>
+            <input type="text" id="username" name="username" required><br>
 
-<h2>Đăng ký thành viên</h2>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br>
 
-Username: <input type="text" name="username" value="" required>
+            <label for="email">Gmail:</label>
+            <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email của bạn" required><br>
 
-Password: <input type="text" name="password" value="" required/>
-
-Email: <input type="email" name="email" value="" required/>
-
-
-<input type="submit" name="dangky" value="Đăng Ký"/>
-</form>
+            <button type="submit">Đăng ký</button>
+        </form>
+    </div>
 
 </body>
 </html>
