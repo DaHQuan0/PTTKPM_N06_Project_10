@@ -7,7 +7,7 @@
     </head>
 <body>
 
-<div class="container">
+<div class="container" style="box-shadow: 0 0 10px rgba(0,0,0,0.6);>
     <form method="post" action="Login.php" class="form">
 
         <h2>Đăng ký</h2>

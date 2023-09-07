@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="css/Login.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="box-shadow: 0 0 10px rgba(0,0,0,0.6);">
 
         <div class = "container-h2">
              <h2>Đăng nhập</h2>
