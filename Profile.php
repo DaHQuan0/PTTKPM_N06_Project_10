@@ -5,8 +5,8 @@ session_start();
 include 'connect.php';
 
 // Check if user_id exists in the session
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
 } else {
     // Redirect to the login page
     header("Location: Login.php");

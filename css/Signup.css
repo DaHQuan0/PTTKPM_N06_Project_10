@@ -31,8 +31,8 @@ body {
 }
 
 label {
-    margin-top: 20px;
-    font-size: 25px;
+    margin-top: 15px;
+    font-size: 20px;
     font-weight: 500;
     display: block;
     margin-bottom: 15px;
@@ -51,11 +51,11 @@ input[type="email"] {
     font-size: 14px;
 }
 
-input[type="submit"] {
+button[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 173px;
+    padding: 10px 165px;
     background-color: var(--main-color);
     color: var(--text-color);
     border: none;
@@ -63,10 +63,10 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: var(--hover-color);
 }
 
@@ -74,6 +74,22 @@ p.error-message {
     color: red;
     font-size: 14px;
     margin-top: 10px;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.register-link a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    color: var(--hover-color);
 }
 
 .container container-h2{

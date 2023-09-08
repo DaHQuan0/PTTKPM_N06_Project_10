@@ -1,81 +1,69 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Đăng ký</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/Signup.css"/>
-    </head>
-<body>
-
-<div class="container" style="box-shadow: 0 0 10px rgba(0,0,0,0.6);>
-    <form method="post" action="Login.php" class="form">
-
-        <h2>Đăng ký</h2>
-
-        <label for="username">Tên người dùng:</label> 
-        <input type="text" name="username" value="" required>
-
-        <label for="password">Mật khẩu:</label>
-        <input type="text" name="password" value="" required/>
-
-        <label for="email">Gmail:</label> 
-        <input type="email" name="email" value="" required/>
-
-
-        <input type="submit" name="dangky" value="Đăng Ký"/>
-    </form>
-</div>
-
-</body>
-</html>
-
 <?php
-header('Content-Type: text/html; charset=utf-8');
-// Kết nối cơ sở dữ liệu
-include('connect.php');
+include "connect.php";
 
-$errors = array(); // Initialize an empty array to store validation errors
+if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
 
-// Dùng isset để kiểm tra Form
-if(isset($_POST['dangky'])){
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $email = trim($_POST['email']);
+    $checkUserQuery = "SELECT id FROM user WHERE username = '$username'";
+    $checkUserResult = $conn->query($checkUserQuery);
 
-    if (empty($username)) {
-      array_push($errors, "Username is required"); 
-    }
-    if (empty($email)) {
-      array_push($errors, "Email is required"); 
-    }
-    if (empty($password)) {
-      array_push($errors, "Password is required"); 
-    }
-
-    // Kiểm tra username hoặc email có bị trùng hay không
-    $dbname = "SELECT * FROM user WHERE username = '$username' OR email = '$email'";
-
-    // Thực thi câu truy vấn
-    $result = mysqli_query($conn, $dbname);
-
-    // Nếu kết quả trả về lớn hơn 0 thì nghĩa là username hoặc email đã tồn tại trong CSDL
-    if (mysqli_num_rows($result) > 0) {
-        echo '<script language="javascript">alert("Bị trùng tên hoặc chưa nhập tên!"); window.location="Login.php";</script>';
-
-        // Dừng chương trình
-        die();
+    if($checkUserResult && $checkUserResult->num_rows > 0) {
+        $errorMessage = "Tên người dùng đã tồn tại.";
     } else {
-        $dbname = "INSERT INTO user (username, password, email) VALUES ('$username','$password','$email')";
+        $insertUserQuery = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email')";
+        $insertUserResult = $conn->query($insertUserQuery);
 
-        if (mysqli_query($conn, $dbname)) {
-            echo '<script language="javascript">alert("Đăng ký thành công!"); window.location="Login.php";</script>';
-            
-            echo "Tên đăng nhập: ".$_POST['username']."<br/>";
-            echo "Mật khẩu: ".$_POST['password']."<br/>";
-            echo "Email đăng nhập: ".$_POST['email']."<br/>";
+        if($insertUserResult) {
+            $successMessage = "Đăng ký thành công. Vui lòng đăng nhập.";
         } else {
-            echo '<script language="javascript">alert("Có lỗi trong quá trình xử lý"); window.location="Login.php";</script>';
+            $errorMessage = "Đã xảy ra lỗi trong quá trình đăng ký.";
         }
     }
 }
+
+$conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="css/Signup.css">
+</head>
+<body>
+    <div class="container" style="box-shadow: 0 0 10px rgba(0,0,0,0.6);">
+        <div class="container-h2">
+            <h2>Đăng ký</h2>
+        </div>
+
+        <form method="post" action="Login.php">
+            <label for="username">Tên người dùng:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <button type="submit">Đăng ký</button>
+        </form>
+
+        <?php
+        if (isset($errorMessage)) {
+            echo "<p class='error-message'>$errorMessage</p>";
+        }
+
+        if (isset($successMessage)) {
+            echo "<p class='success-message'>$successMessage</p>";
+        }
+        ?>
+
+        <div class="register-link">
+            Đã có tài khoản? <a href="Login.php">Đăng nhập</a>
+        </div>
+    </div>
+</body>
+</html>

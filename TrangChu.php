@@ -1,5 +1,31 @@
-<?php 
-    include "connect.php";
+<?php
+session_start();
+
+// Kiểm tra xem có tham số id trong URL hay không
+if (isset($_GET['id'])) {
+    $_SESSION['id'] = $_GET['id'];
+} else {
+    $_SESSION['id'] = null;
+}
+
+// Kết nối đến cơ sở dữ liệu
+include 'connect.php';
+
+$user = null;
+
+// Lấy thông tin người dùng từ cơ sở dữ liệu (nếu có)
+if ($_SESSION['id'] !== null) {
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM user WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    }
+}
+
+// Đóng kết nối cơ sở dữ liệu
+$conn->close();
 ?>
 
 
@@ -34,9 +60,9 @@
                 </form>
             </div>
             <div class="end" style="height: 45px;">
-                <button class="avatar" style="height: 45px; width: 45px; border: none; border-radius: 50%;">
-                    <img src="./images/Minion-Crazy-icon.jpg" alt="Hình ảnh đại diện" style="border-radius: 25px;">
-                </button>
+                <a href="<?php echo isset($_SESSION['id']) ? 'Profile.php?id=' . $_SESSION['id'] : 'Login.php'; ?>" class="user">
+                    <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="" class="user-img">
+                </a>
             </div>
         </div>
         

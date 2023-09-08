@@ -151,9 +151,6 @@ header {
     background-color: rgb(129, 129, 220);
 }
 
-
-
-
 .mainContainer .content{
     display: block;
     margin-left: 256px;
@@ -246,8 +243,6 @@ header {
     transform: translateX(305px) translateY(423px);
 }
 
-
-
 .favourite__btn{
     position: absolute;
     margin-right: 10px;
@@ -305,3 +300,14 @@ header {
     left: 0;
     bottom: 10px;
   }
+
+.user {
+    display: flex;
+}
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
