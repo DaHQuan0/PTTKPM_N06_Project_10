@@ -65,12 +65,41 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/Profile.css">
     <title>Profile</title>
 </head>
 
 <body>
 
-    <section class="container">
+    <header>
+        <div class="container">
+            <div class="start" style="height: 45px;">
+                <button class="toolbar" style="position: relative;width: 45px;height: 45px; border: none; background-color: transparent;">
+                    <span style="display: block; font-size: 35px;align-items: center;" class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="Trangchu.php" class="logo">
+                    <img src="images/logo.png" alt="" width="25%">
+                </a>
+            </div>
+            <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">
+                <form action="Search.php" method="post" style="display: flex;">
+                    <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;padding-left: 15px;">
+                    <button class="search-button" type="submit" name="btn" style="width: 40px;border-radius: 15px;background-color: white;">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </form>
+            </div>
+            <div class="end" style="height: 45px;">
+                <a href="<?php echo isset($_SESSION['id']) ? 'Profile.php?id=' . $_SESSION['id'] : 'Login.php'; ?>" class="user">
+                    <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="" class="user-img">
+                </a>
+            </div>
+        </div>
+        
+    </header>
+
+    <section class="container2">
         <?php if ($user === null) : ?>
             <h1>Vui lòng đăng nhập trước</h1>
         <?php else : ?>
@@ -103,8 +132,6 @@ if (isset($_POST['logout'])) {
         <?php endif; ?>
     </section>
 
-    <script src="js/main.js"></script>
-    <script src="dropdown.js"></script>
 </body>
 
 </html>
