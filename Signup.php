@@ -5,22 +5,41 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-
-    $checkUserQuery = "SELECT id FROM user WHERE username = '$username'";
-    $checkUserResult = $conn->query($checkUserQuery);
-
-    if($checkUserResult && $checkUserResult->num_rows > 0) {
-        $errorMessage = "Tên người dùng đã tồn tại.";
+    if (preg_match('/[^\w\s]/', $username) || preg_match('/\s/', $username)) {
+        $errorMessage = "Tên người dùng không được có ký tự đặc biệt hoặc khoảng trắng!";
     } else {
-        $insertUserQuery = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email')";
-        $insertUserResult = $conn->query($insertUserQuery);
-
-        if($insertUserResult) {
-            $successMessage = "Đăng ký thành công. Vui lòng đăng nhập.";
+        $checkUserQuery = "SELECT id FROM user WHERE username = '$username'";
+        $checkUserResult = $conn->query($checkUserQuery);
+    
+        if($checkUserResult && $checkUserResult->num_rows > 0) {
+            $errorMessage = "Tên người dùng đã tồn tại.";
         } else {
-            $errorMessage = "Đã xảy ra lỗi trong quá trình đăng ký.";
+            $insertUserQuery = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email')";
+            $insertUserResult = $conn->query($insertUserQuery);
+    
+            if($insertUserResult) {
+                $successMessage = "Đăng ký thành công. Vui lòng đăng nhập.";
+            } else {
+                $errorMessage = "Đã xảy ra lỗi trong quá trình đăng ký.";
+            }
         }
+
     }
+    // $checkUserQuery = "SELECT id FROM user WHERE username = '$username'";
+    // $checkUserResult = $conn->query($checkUserQuery);
+
+    // if($checkUserResult && $checkUserResult->num_rows > 0) {
+    //     $errorMessage = "Tên người dùng đã tồn tại.";
+    // } else {
+    //     $insertUserQuery = "INSERT INTO user (username, password, email) VALUES ('$username', '$password', '$email')";
+    //     $insertUserResult = $conn->query($insertUserQuery);
+
+    //     if($insertUserResult) {
+    //         $successMessage = "Đăng ký thành công. Vui lòng đăng nhập.";
+    //     } else {
+    //         $errorMessage = "Đã xảy ra lỗi trong quá trình đăng ký.";
+    //     }
+    // }
 }
 
 $conn->close();
@@ -38,7 +57,7 @@ $conn->close();
             <h2>Đăng ký</h2>
         </div>
 
-        <form method="post" action="Login.php">
+        <form method="post" action="Signup.php">
             <label for="username">Tên người dùng:</label>
             <input type="text" id="username" name="username" required><br>
 

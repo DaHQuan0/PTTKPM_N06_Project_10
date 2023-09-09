@@ -3,7 +3,7 @@ body {
     --hover-color: hsl(188, 94%, 57%);
     --body-color: #1e1e2a;
     --text-color: #fcfeff;
-    background-image: url('https://i.pinimg.com/564x/67/1a/d3/671ad3294dbe9971829dbb097ee71142.jpg');
+    background-image: url("images/b.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

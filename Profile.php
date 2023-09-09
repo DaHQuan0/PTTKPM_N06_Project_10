@@ -124,6 +124,10 @@ if (isset($_POST['logout'])) {
                     <label for="user_image">Đường dẫn ảnh đại diện:</label>
                     <input type="text" name="user_image" id="user_image" class="infor-input" value="<?php echo htmlspecialchars($user['user_image']); ?>">
                 </div>
+                <!-- <div>
+                    <label for="user_image">Password:</label>
+                    <input type="password" name="user_image" id="user_image" class="infor-input" value="<?php echo htmlspecialchars($user['user_image']); ?>">
+                </div> -->
                 <div class="button-row">
                     <button type="submit" name="update" class="update-button">Cập nhật</button>
                     <button type="submit" name="logout" class="logout-button">Đăng xuất</button>
