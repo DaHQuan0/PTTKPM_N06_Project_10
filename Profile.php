@@ -29,18 +29,20 @@ if ($result->num_rows > 0) {
 if (isset($_POST['update'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $password = $_POST["password"];
     $user_image = isset($_POST['user_image']) ? $_POST['user_image'] : '';
 
     // Update user information in the database
-    $sql = "UPDATE user SET username = ?, email = ?, user_image = ? WHERE id = ?";
+    $sql = "UPDATE user SET username = ?, email = ?, password = ?, user_image = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssi", $username, $email, $user_image, $user_id);
+    $stmt->bind_param("ssssi", $username, $email, $password, $user_image, $user_id);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
         // Update successful, update the user variable
         $user['username'] = $username;
         $user['email'] = $email;
+        $user['password'] = $password;
         $user['user_image'] = $user_image;
     }
     $stmt->close();
@@ -121,13 +123,13 @@ if (isset($_POST['logout'])) {
                     <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>">
                 </div>
                 <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="infor-input" style="width:100%; padding: 10px; border: 1px solid #ccc; boder-radius: 4px;" value="<?php echo htmlspecialchars($user['password']); ?>">
+                </div>
+                <div>
                     <label for="user_image">Đường dẫn ảnh đại diện:</label>
                     <input type="text" name="user_image" id="user_image" class="infor-input" value="<?php echo htmlspecialchars($user['user_image']); ?>">
                 </div>
-                <!-- <div>
-                    <label for="user_image">Password:</label>
-                    <input type="password" name="user_image" id="user_image" class="infor-input" value="<?php echo htmlspecialchars($user['user_image']); ?>">
-                </div> -->
                 <div class="button-row">
                     <button type="submit" name="update" class="update-button">Cập nhật</button>
                     <button type="submit" name="logout" class="logout-button">Đăng xuất</button>

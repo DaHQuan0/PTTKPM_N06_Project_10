@@ -3,10 +3,10 @@ body {
     --hover-color: hsl(188, 94%, 57%);
     --body-color: #1e1e2a;
     --text-color: #fcfeff;
-    background-image: url("images/b.png");
+    background-image: url("../images/b.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: auto;
     color: var(--text-color);
     font-family:'Times New Roman', Times, serif;
     margin: 0;
@@ -31,7 +31,7 @@ body {
 }
 
 label {
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 20px;
     font-weight: 500;
     display: block;
@@ -55,7 +55,7 @@ button[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 165px;
+    padding: 10px 173px;
     background-color: var(--main-color);
     color: var(--text-color);
     border: none;
@@ -63,7 +63,7 @@ button[type="submit"] {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 button[type="submit"]:hover {
