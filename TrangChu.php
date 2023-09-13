@@ -24,10 +24,65 @@ if ($_SESSION['id'] !== null) {
     }
 }
 
+// $keyword = "";
+// if(isset($_GET['btn'])) {
+//     $keyword = $_GET['noidung'];
+
+//     $sql = "SELECT * FROM art WHERE image LIKE '%$keyword%' OR category LIKE '%$keyword%'";
+//     $result = $conn->query($sql);
+
+//     while($row = mysqli_fetch_array($result)){
+//         echo $row['image'];
+//     }
+// }
+class Art {
+    public function searchArt($conn) {
+        $results = array();
+        $keyword = "";
+        if(isset($_GET['btn'])){
+            $keyword = $_GET['noidung'];
+            $keyword = strtolower($keyword);
+            $array = explode(' ', $keyword);
+            foreach($array as $value){
+                $sql = "SELECT image, category FROM art WHERE LOWER(image) LIKE '%$value%' OR LOWER(category) LIKE '%$value%'";
+                $result = $conn->query($sql);
+
+                if($result){
+                    while($row = $result->fetch_assoc()){
+                        $results[] = array(
+                            'image' => $row['image'],
+                            'category' => $row['category']
+                        );
+                    }
+                }
+            }
+        }
+        $uniqueResults = array_unique($results, SORT_REGULAR);
+        foreach($uniqueResults as $result){
+            echo "Image: " . $result['image'] . "<br>";
+            echo "Category: " . $result['category'] . "<br>";
+            echo "<br>";
+        }
+    }
+}
+
+// Sử dụng lớp Art
+$art = new Art();
+$art->searchArt($conn);
+
+
+
+
 // Đóng kết nối cơ sở dữ liệu
 $conn->close();
 ?>
+<script>
+    var jsArray = <?php echo $jsonArr; ?>;
+    for(item of jsArray) {
 
+    }
+
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +107,7 @@ $conn->close();
                 </a>
             </div>
             <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">
-                <form action="Search.php" method="post" style="display: flex;">
+                <form method="get" ;style="display: flex;">
                     <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;padding-left: 15px;">
                     <button class="search-button" type="submit" name="btn" style="width: 40px;border-radius: 15px;background-color: white;">
                         <span class="material-symbols-outlined">search</span>
