@@ -2,7 +2,7 @@
 session_start();
 
 // Include the database connection
-include 'connect.php';
+include '../config/connect.php';
 
 // Check if user_id exists in the session
 if (isset($_SESSION['id'])) {
@@ -68,7 +68,7 @@ if (isset($_POST['logout'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="css/Profile.css">
+    <link rel="stylesheet" href="../css/Profile.css">
     <title>Profile</title>
 </head>
 

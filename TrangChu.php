@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 }
 
 // Kết nối đến cơ sở dữ liệu
-include 'connect.php';
+include 'config/connect.php';
 
 $user = null;
 
@@ -24,17 +24,7 @@ if ($_SESSION['id'] !== null) {
     }
 }
 
-// $keyword = "";
-// if(isset($_GET['btn'])) {
-//     $keyword = $_GET['noidung'];
 
-//     $sql = "SELECT * FROM art WHERE image LIKE '%$keyword%' OR category LIKE '%$keyword%'";
-//     $result = $conn->query($sql);
-
-//     while($row = mysqli_fetch_array($result)){
-//         echo $row['image'];
-//     }
-// }
 class Art {
     public function searchArt($conn) {
         $results = array();
@@ -44,7 +34,7 @@ class Art {
             $keyword = strtolower($keyword);
             $array = explode(' ', $keyword);
             foreach($array as $value){
-                $sql = "SELECT image, category FROM art WHERE LOWER(image) LIKE '%$value%' OR LOWER(category) LIKE '%$value%'";
+                $sql = "SELECT * FROM art WHERE LOWER(image) LIKE '%$value%' OR LOWER(category) LIKE '%$value%'";
                 $result = $conn->query($sql);
 
                 if($result){
@@ -57,6 +47,7 @@ class Art {
                 }
             }
         }
+
         $uniqueResults = array_unique($results, SORT_REGULAR);
         foreach($uniqueResults as $result){
             echo "Image: " . $result['image'] . "<br>";
@@ -107,7 +98,7 @@ $conn->close();
                 </a>
             </div>
             <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">
-                <form method="get" ;style="display: flex;">
+                <form method="get" action="Trangchu.php?noidung=timkiem&btn=" style="display: flex;">
                     <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;padding-left: 15px;">
                     <button class="search-button" type="submit" name="btn" style="width: 40px;border-radius: 15px;background-color: white;">
                         <span class="material-symbols-outlined">search</span>
@@ -115,7 +106,7 @@ $conn->close();
                 </form>
             </div>
             <div class="end" style="height: 45px;">
-                <a href="<?php echo isset($_SESSION['id']) ? 'Profile.php?id=' . $_SESSION['id'] : 'Login.php'; ?>" class="user">
+                <a href="<?php echo isset($_SESSION['id']) ? 'php/Profile.php?id=' . $_SESSION['id'] : 'php/Login.php'; ?>" class="user">
                     <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="" class="user-img">
                 </a>
             </div>
