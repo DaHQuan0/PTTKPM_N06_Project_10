@@ -2,7 +2,7 @@
     // Kết nối đến cơ sở dữ liệu
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "Ngocvan.1808";
     $dbname = "shareimage";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
