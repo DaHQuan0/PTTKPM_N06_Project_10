@@ -103,7 +103,6 @@ if (isset($_POST['logout'])) {
 
     <section class="container2">
         <?php if ($user === null) : ?>
-            <h1>Vui lòng đăng nhập trước</h1>
         <?php else : ?>
             <h1>Thông tin cá nhân</h1>
             <div class="user-info">
@@ -143,6 +142,5 @@ if (isset($_POST['logout'])) {
 </html>
 
 <?php
-// Close the database connection
 $conn->close();
 ?>
