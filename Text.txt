@@ -11,7 +11,6 @@ Các chức năng bắt buộc:
 	6. Tìm kiếm và trang trả về sau khi tìm kiếm
 	7. Profile(them sua xoa)
 	8. Trang hiển thị thông tin ảnh
-	9. Tương thích với thiết bị di động 
 Các chức năng bổ sung:
 
 
@@ -21,11 +20,11 @@ Các chức năng bổ sung:
 
 		front 																back
 
-cụm 1: Trang chủ													yêu thích, phân trang 
+cụm 1: Trang chủ													yêu thích
 
 cụm 2: Quản lý album(hiển thị hình ảnh giống trang chủ)				up ảnh và tải ảnh
 Trang hình ảnh yêu thích
-cụm 3: Tìm kiếm, profile											thêm xóa avt, đổi mk
+cụm 3: Tìm kiếm, profile											đổi mk
 
 cụm 4: Hiển thị chi tiết hình ảnh, comment							chia sẻ, comment
 
