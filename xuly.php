@@ -25,7 +25,7 @@ if ($_SESSION['id'] !== null) {
 }
 
 
-class Art {
+class searchArt {
     public function searchArt($conn) {
         $results = array();
         $keyword = "";
@@ -57,12 +57,9 @@ class Art {
     }
 }
 
-// Sử dụng lớp Art
-$art = new Art();
-$art->searchArt($conn);
-
-
-
+// Sử dụng lớp searchArt
+$searchArt = new searchArt();
+$searchArt->searchArt($conn);
 
 // Đóng kết nối cơ sở dữ liệu
 $conn->close();

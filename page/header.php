@@ -18,7 +18,7 @@
             </div>
             <div class="end" style="height: 45px;">
                 <a href="<?php echo isset($_SESSION['id']) ? 'php/Profile.php?id=' . $_SESSION['id'] : 'php/Login.php'; ?>" class="user">
-                    <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="" class="user-img">
+                    <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="Ảnh đại diện" class="user-img">
                 </a>
             </div>
         </div>
