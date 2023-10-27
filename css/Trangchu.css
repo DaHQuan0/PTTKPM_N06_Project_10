@@ -75,16 +75,19 @@ header {
 }
 .leftMenu{
     /* margin-left: 500px; */
+    transform: translateX(-256px);
     width: 256px;
     height: 91%;
     position: fixed;
     overflow-y: hidden;   
     overflow-x: hidden;   
     padding: 10px 20px 20px ;
-    z-index: 999;
+    z-index: 9999;
+    background-color: white;
     /* transition-property: translate3d(0, 0, 0); */
     /* animation-name: example;
     animation-duration: 2s; */
+    /* display: none; */
 }
 
 @keyframes example {
@@ -152,7 +155,7 @@ header {
     position: fixed;
     height: 40px;
     display: flex;
-    padding-left: var(--margin-left);
+    /* padding-left: var(--margin-left); */
     width: 100%;
     z-index: 998;
     justify-content: space-between;
@@ -183,15 +186,12 @@ header {
     background-color: rgb(129, 129, 220);
 }
 
-/* .mainContainer{
-    margin-left: 100px;
 
-} */
 
 
 .mainContainer .content{
     display: block;
-    margin-left: var(--margin-left);
+    /* margin-left: var(--margin-left); */
     /* padding: 0; */
     position: relative;
     width: calc(100% - var(--margin-left));
@@ -246,9 +246,9 @@ header {
     border-radius: 50%;
     z-index: 10;
 }
-/* .favourite__btn{
+.favourite__btn:hover {
     color: red;
-} */
+}
 .heart, .heart::before,
 .heart::after{
     background-color: red;

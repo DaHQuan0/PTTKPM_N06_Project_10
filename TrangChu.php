@@ -99,7 +99,7 @@ $conn->close();
             });
         });
 
-        let check = true;  
+        let check = false;  
         // var rect = element.getBoundingClientRect();
         function favourite(){
 
@@ -114,26 +114,30 @@ $conn->close();
         function click_btn_menu(){
             let main = document.getElementById("main");
             let menu = document.getElementById("menu");
+            let bgrmain = document.getElementById("bgr-main");
             let translate = document.getElementsByClassName("translate");
             if(check == true){
                 check = false;
                 menu.style.transform = "translateX(-256px)";
-                main.style.setProperty('--margin-left','0px')
+                // main.style.setProperty('--margin-left','0px')
                 for(let i = 0 ; i < translate.length;i++){
                     translate[i].style.animationDuration = "0.5s";
                     translate[i].style.animationName = "example";
                 }                
+                bgrmain.style.display = "none";
             }
             else if(check== false){
                 check = true;
                 menu.style.transform = "translateX(0)";
-                main.style.setProperty('--margin-left','256px')
+                // main.style.setProperty('--margin-left','256px')
 
                 for(let i = 0 ; i < translate.length;i++){
                     translate[i].style.animationDuration = "1s";
                     translate[i].style.animationName = "example1";
                     
                 }
+                bgrmain.style.display = "block";
+                bgrmain.style.opacity = 0.8;
             }
 
         }
@@ -249,9 +253,10 @@ $conn->close();
         </div>
         
         
-        
+
         <div id="main" class="mainContainer" style="width: 100%;display: block;">
-            <div class="webContent__header translate">
+            <div id="bgr-main" style="position: fixed; background-color: grey;width:100%;height:100%;display:none;z-index: 99;"></div>
+            <div class="webContent__header ">
                 <ul class="list__btn">
                     <a href=""><li>Tất cả</li></a>
                     <a href=""><li>Phong cảnh</li></a>
@@ -265,7 +270,7 @@ $conn->close();
                     <a href=""><li>Hoạt hình</li></a>
                 </ul>
             </div>
-            <div role="list" class="content translate" >
+            <div role="list" class="content " >
             <?php
                 include 'config/connect.php';
                         $results = array();
@@ -283,7 +288,7 @@ $conn->close();
                         $x = array();
                         $y = array();
                         $heights = array();
-                        $widths = 900;
+                        $widths = 1528;
                         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             // Kiểm tra xem có dữ liệu được gửi từ JavaScript hay không
                             if (isset($_POST['width'])) {
@@ -300,25 +305,24 @@ $conn->close();
                             $imageURL = $results[$i]['image'];
                             $imageSize = getimagesize($imageURL);
                             $width = 252;
-                            
                             $height = $width * $imageSize[1] / $imageSize[0];
                             array_push($heights,$height );
                             echo 
-                            '<a role="listitem" data-grid-item="true" style="position: absolute;
+                            '<div role="listitem" data-grid-item="true" style="position: absolute;
                             display: flex;
                             width: '.$width.'px;
                             height: '.$height.'px;
                             top:0;
                             left:0;
                             transform: translateX('.$x[$i].'px) translateY('.$y[$i].'px);" href="">
-                                <div class="img--border"><img class="image" src="'. $imageURL .'" alt="Ảnh"></div>
+                                <a class="img--border"><img class="image" src="'. $imageURL .'" alt="Ảnh"></a>
                                 
                                 <button onclick="favourite()" id="favourite__btn" class="favourite__btn">
                                     <span class="material-symbols-outlined">favorite</span>
                                     <span id="heart" class="heart"></span>
                                 </button>
 
-                            </a>';
+                            </div>';
                             
                             if($i % $count == ($count-1) && $i != 0){
                                 
@@ -327,7 +331,7 @@ $conn->close();
                             }else{
                                 array_push($x,$x[$i] + $width);
                             }
-                            array_push($y,$height);
+                            array_push($y,$y[$i] + $height);
                         }
                         $conn->close();
                     ?>
