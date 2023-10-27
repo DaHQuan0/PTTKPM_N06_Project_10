@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 session_start();
 
 // Kiểm tra xem có tham số id trong URL hay không
@@ -24,7 +25,6 @@ if ($_SESSION['id'] !== null) {
     }
 }
 
-
 class searchArt {
     public function searchArt($conn) {
         $results = array();
@@ -48,14 +48,44 @@ class searchArt {
             }
         }
 
-        
+        return $results; // Trả về kết quả tìm kiếm
     }
 }
 
 // Sử dụng lớp searchArt
 $searchArt = new searchArt();
-$searchArt->searchArt($conn);
-
-// Đóng kết nối cơ sở dữ liệu
-$conn->close();
+$results = $searchArt->searchArt($conn); // Lưu trữ kết quả tìm kiếm vào biến $results
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/Trangchu.css">
+</head>
+<body>
+    <?php 
+        include 'page/header.php';
+        include 'page/sidebar.php';
+    ?>
+
+    <div class="results-container">
+        <?php 
+            $uniqueResults = array_unique($results, SORT_REGULAR);
+            foreach($uniqueResults as $result){
+                echo "<div class='result'>";
+                echo "Image: " . $result['image'] . "<br>";
+                echo "Category: " . $result['category'] . "<br>";
+                echo "</div>";
+            }
+        ?>
+    </div>
+
+    <?php 
+        include 'page/footer.php';
+    ?>
+</body>
+</html>
