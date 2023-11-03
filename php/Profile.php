@@ -73,33 +73,62 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
+<?php if($_SESSION['id'] == null){
+    $href = "";
+}else{
+    $href = "?id=";
+}
 
-    <header>
-        <div class="container">
-            <div class="start" style="height: 45px;">
-                <button class="toolbar" style="position: relative;width: 45px;height: 45px; border: none; background-color: transparent;">
-                    <span style="display: block; font-size: 35px;align-items: center;" class="material-symbols-outlined">menu</span>
-                </button>
-                <a href="Trangchu.php" class="logo">
-                    <img src="images/logo.png" alt="" width="25%">
+    include '../page/header.php';
+    ?>
+<div class="webContent">
+        <div id="menu" class="leftMenu translate">
+            <div class="btn home">
+
+                <?php echo '<a href="../TrangChu.php?id='.$_SESSION['id'].'">';?>
+                    <span class="material-symbols-outlined">house</span>
+                    <span class="title">Trang chủ</span>
                 </a>
             </div>
-            <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">
-                <form action="Search.php" method="post" style="display: flex;">
-                    <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;padding-left: 15px;">
-                    <button class="search-button" type="submit" name="btn" style="width: 40px;border-radius: 15px;background-color: white;">
-                        <span class="material-symbols-outlined">search</span>
-                    </button>
-                </form>
-            </div>
-            <div class="end" style="height: 45px;">
-                <a href="<?php echo isset($_SESSION['id']) ? 'Profile.php?id=' . $_SESSION['id'] : 'Login.php'; ?>" class="user">
-                    <img src="<?php echo $user !== null ? $user['user_image'] : 'img/images.png'; ?>" alt="" class="user-img">
+            <div class="btn album">
+                <a href="">
+                    <span class="material-symbols-outlined">photo_album</span>
+                    <span class="title">Album</span>
                 </a>
             </div>
+            <div class="btn favourite">
+                
+                <?php if($href == ""){
+                    echo '<a href="Login.php">';
+                }else{
+                    echo '<a href="../TrangChu.php?id='.$_SESSION['id'].'&favourite">';
+                } ?>
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span class="title">Ảnh yêu thích</span>
+                </a>
+            </div>
+            
+            <hr style="margin-top:30px">
+            <div class="footer_leftMenu">
+            <h3 style="margin-top:15px; font-weight:bold;">Người Thực Hiện</h3>
+            <div style="display:flex; color:red;padding: 10px 15px; line-height:1.5;" >
+                    <div>
+                        <p>Vũ Ngọc Văn</p>
+                        <p>Đào Anh Quân</p>
+                        <p>Dương Tuấn Phong</p>
+                        <p>Ngô Trần Đức Long</p>
+                    </div>
+                </div>
+            </div>
+            
+            
         </div>
         
-    </header>
+        
+
+        <div id="main" class="mainContainer" style="width: 100%;display: block;">
+            <div id="bgr-main" style="position: fixed; background-color: grey;width:100%;height:100%;display:none;z-index: 99;"></div>
+            
 
     <section class="container2">
         <?php if ($user === null) : ?>
