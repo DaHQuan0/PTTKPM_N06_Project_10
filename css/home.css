@@ -41,11 +41,12 @@ button{
 }
 
 header {
-    position: sticky;
+    position: fixed;
     top:0;
     margin: 0;
     padding: 10px;
-    height: 10%;
+    height: 80px;
+    width: 100%;
     background-color: rgb(89, 211, 211);
     z-index: 9999;
 }
@@ -63,6 +64,7 @@ header {
     display: flex;
     /* padding-top: 10px; */
     width: 100%;
+    margin-top: 80px;
     /* background-color: #888; */
     
 }

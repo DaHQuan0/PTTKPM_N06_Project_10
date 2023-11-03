@@ -1,5 +1,5 @@
 <html>
-    <link rel="stylesheet" href="../css/trangchu.css">
+    <link rel="stylesheet" href="../css/home.css">
     <script src="../js/Trangchu.js"></script>
 </html>
 <header>
