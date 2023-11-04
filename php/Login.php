@@ -14,7 +14,7 @@
             $passresult = $conn->query($dbnamepass);
 
             if($passresult && $passresult->num_rows > 0) {
-                header("Location:../Trangchu.php?id=$id");
+                header("Location:../TrangChu.php?id=$id");
                 exit();
             } else {
                 $errorMessage = "Mật khẩu không chính xác.";
