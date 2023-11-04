@@ -109,7 +109,7 @@
                             top:0;
                             left:0;
                             transform: translateX('.$x[$i].'px) translateY('.$y[$i].'px);" href="">
-                                <a class="img--border"><img class="image" src="'. $results[$i]['image'] .'" alt="Ảnh"></a>';
+                                <a href="comment.php?id='.$results[$i]['id'].'"  target="_blank" class="img--border"><img class="image" src="'. $results[$i]['image'] .'" alt="Ảnh"></a>';
                                 if(!isset($_GET['favourite'])){
                                     echo '<button style="color:white;" onclick="favourite('.$i.','.$_SESSION['id'].','.$results[$i]['id'].')" id="favourite__btn_'.$i.'" class="favourite__btn">
                                     <span class="material-symbols-outlined">favorite</span>

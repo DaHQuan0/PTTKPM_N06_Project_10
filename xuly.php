@@ -24,13 +24,6 @@ if ($_SESSION['id'] !== null) {
     }
 }
 
-<<<<<<< HEAD
-
-// Sử dụng lớp searchArt
-
-
-=======
->>>>>>> 2745d39f7e8e9f6897c3e46268cd04c2d4cb355b
 // Đóng kết nối cơ sở dữ liệu
 $conn->close();
 ?>

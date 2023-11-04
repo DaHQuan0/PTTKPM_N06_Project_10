@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+}
+
+.image-container {
+    background-color: black;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    margin: auto;
+    display: block;
+}
+
+.right-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    overflow-x: hidden;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.owner-info {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+
+}
+
+.owner-info img {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    margin-right: 20px;
+}
+
+.owner-info .username-link {
+    font-size: 20px;
+}
+
+.username-link {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.username-link:hover {
+    cursor: pointer;
+
+    text-decoration: underline;
+    transition: all 200ms ease-in;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    margin: 2px;
+    background-color: darkgrey;
+    border: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    border: none;
+    color: grey;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.btn:hover {
+    background-color: lightgrey;
+    color: white;
+    font-size: 14px;
+    transition: all 300ms ease-in-out;
+}
+
+.comment-section {
+    width: 100%;
+}
+
+.comment-container {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-container img {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+}
+
+.comment-container p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-container .comment-content {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #EFF2F5;
+    box-sizing: border-box;
+}
+
+.comment-date {
+    margin-top: 5px;
+    margin-left: 12px;
+    text-align: end;
+}
+
+.comment-input-container {
+    position: absolute;
+    width: 30%;
+    bottom: 0;
+    background-color: white;
+}
+
+.comment-input-form {
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    border: #EFF2F5;
+    border-radius: 15px;
+    background-color: #EFF2F5;
+}
+
+.comment-input-form .text-input {
+    flex: 9;
+    outline: none;
+    border: none;
+    background-color: #EFF2F5;
+
+}
+
+.comment-input-form .submit {
+    cursor: pointer;
+    flex: 1;
+    border: none;
+    width: 30px;
+}
