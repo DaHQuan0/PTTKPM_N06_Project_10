@@ -9,7 +9,7 @@
                     <span style="display: block; font-size: 30px;align-items: center;" class="material-symbols-outlined">menu</span>
                 </button>
                 <a href="Trangchu.php" class="logo">
-                    <img src="images/logo.png" alt="<?php echo $_SESSION['id']?>" width="25%">
+                    <img src="images/logo.png" alt="" width="25%">
                 </a>
             </div>
             <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">

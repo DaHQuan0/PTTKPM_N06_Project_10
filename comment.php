@@ -1,10 +1,13 @@
 <?php
 include './Db.class.php';
 include './Model.php';
+
+session_start();
 $imageModel = new PostModel();
 $commentModel = new CommentModel();
 // $BASE_URL = "comment.php";
 
+// echo($_SESSION['id']);
 $id = $_GET['id'] ?? '';
 $post = $imageModel->getPostbyId($id);
 
@@ -12,7 +15,9 @@ $post = $imageModel->getPostbyId($id);
 //xu ly them comment khi duoc submit
 $content = $_POST['content'] ?? null;
 if ($content != null) {
-    $commentModel->addComment($id, $content, 1);
+    $user = $_GET['user'];
+
+    $commentModel->addComment($id, $content, $user);
     header('Location: comment.php?id=' . $id);
 }
 
@@ -85,7 +90,7 @@ else { ?>
 
             </div>
             <div class="comment-input-container">
-                <form class="comment-input-form" action="comment.php?id=<?php echo $id ?>" method="post">
+                <form class="comment-input-form" action="comment.php?id=<?php echo $id ?>&user=<?php echo $_SESSION['id']?>" method="post">
                     <input class="text-input" name="content" type="text"/>
                     <button class="submit" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
                     </button>
