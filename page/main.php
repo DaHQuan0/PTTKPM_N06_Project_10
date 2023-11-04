@@ -86,9 +86,9 @@
 
                         for ($i = 0; $i < count($results); $i++) {
                             // array_push($imageURL,$results[$i]['image']);
-                            $imageSize = getimagesize($results[$i]['image']);
-                            $height = $width * $imageSize[1] / $imageSize[0];
-                            // $height = 250;
+                            // $imageSize = getimagesize($results[$i]['image']);
+                            // $height = $width * $imageSize[1] / $imageSize[0];
+                            $height = 250;
                             array_push($heights,$height );
                             if($i % $count == ($count-1) && $i != 0){
                                 

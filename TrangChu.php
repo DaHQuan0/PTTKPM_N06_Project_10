@@ -19,7 +19,6 @@
         include 'page/header.php';
         include 'page/sidebar.php';
         include 'page/main.php';
-        include 'page/footer.php';
     ?>
 </body>
 </html>

@@ -4,7 +4,7 @@ class Db
     public  $conn=null;
     function __construct()
     {
-        $this->conn = new PDO("mysql:host=". "localhost".";dbname=". "shareimage", "root","Ngocvan.1808");
+        $this->conn = new PDO("mysql:host=". "localhost".";dbname=". "shareimage", "root","");
         $this->conn->query('set names utf8');
     }
 
