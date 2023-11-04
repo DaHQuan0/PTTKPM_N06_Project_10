@@ -25,36 +25,8 @@ if ($_SESSION['id'] !== null) {
 }
 
 
-class searchArt {
-    public function searchArt($conn) {
-        $results = array();
-        $keyword = "";
-        if(isset($_GET['btn'])){
-            $keyword = $_GET['noidung'];
-            $keyword = strtolower($keyword);
-            $array = explode(' ', $keyword);
-            foreach($array as $value){
-                $sql = "SELECT * FROM art WHERE LOWER(image) LIKE '%$value%' OR LOWER(category) LIKE '%$value%'";
-                $result = $conn->query($sql);
-
-                if($result){
-                    while($row = $result->fetch_assoc()){
-                        $results[] = array(
-                            'image' => $row['image'],
-                            'category' => $row['category']
-                        );
-                    }
-                }
-            }
-        }
-
-        
-    }
-}
-
 // Sử dụng lớp searchArt
-$searchArt = new searchArt();
-$searchArt->searchArt($conn);
+
 
 // Đóng kết nối cơ sở dữ liệu
 $conn->close();

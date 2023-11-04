@@ -9,11 +9,11 @@
                     <span style="display: block; font-size: 30px;align-items: center;" class="material-symbols-outlined">menu</span>
                 </button>
                 <a href="Trangchu.php" class="logo">
-                    <img src="images/logo.png" alt="" width="25%">
+                    <img src="images/logo.png" alt="<?php echo $_SESSION['id']?>" width="25%">
                 </a>
             </div>
             <div class="center" style="padding-left: 25%; padding-right: 25%; padding-top: 15px; border-radius: 15px;">
-                <form method="get" action="Trangchu.php?noidung=timkiem&btn=" style="display: flex;">
+                <form method="get" action="<?php echo isset($_SESSION['id']) ? 'Search.php?noidung=&id=' . $_SESSION['id'] : 'Search.php?noidung='; ?>" style="display: flex;">
                     <input type="search" name="noidung" autocomplete="off" placeholder="Nhập nội dung tìm kiếm" style="width: 550px;border-radius: 15px; outline: none;padding-left: 15px;">
                     <button class="search-button" type="submit" name="btn" style="width: 40px;border-radius: 15px;background-color: white;">
                         <span class="material-symbols-outlined">search</span>
